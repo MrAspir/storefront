@@ -1,0 +1,15 @@
+.Header {
+    &__container {
+        @extend .container;
+    }
+
+    &__row {
+        @extend .row;
+    }
+
+    &__logo,
+    &__menu,
+    &__cart {
+        @extend .col-auto;
+    }
+}
