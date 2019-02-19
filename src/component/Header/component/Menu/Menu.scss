@@ -1,0 +1,52 @@
+.Menu {
+    @extend .list-unstyled;
+
+    font-weight: 700;
+    display: flex;
+    margin-bottom: 0;
+    text-transform: uppercase;
+
+    &__item {
+        position: relative;
+
+        &:hover {
+            .Menu {
+                visibility: visible;
+                opacity: 1;
+                transition: visibility 0s step-end, opacity 0.15s ease-in-out;
+            }
+        }
+
+        &.has-children {
+            > .Menu__link {
+                @include caret;
+
+                &::after {
+                    position: relative;
+                    top: 1px;
+                    margin-left: 7px;
+                }
+            }
+        }
+    }
+
+    &__link {
+        display: block;
+        padding: 10px 15px;
+        color: $gray-900;
+    }
+
+    .Menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        flex-direction: column;
+        visibility: hidden;
+        opacity: 0;
+        padding: 10px 15px;
+        min-height: 100%;
+        background: $white;
+        box-shadow: 0 10px 10px transparentize($black, 0.8);
+        transition: visibility 0s step-end 0.15s, opacity 0.15s ease-in-out;
+    }
+}

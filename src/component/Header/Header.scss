@@ -5,6 +5,9 @@
 
     &__row {
         @extend .row;
+
+        justify-content: space-between;
+        align-items: center;
     }
 
     &__logo,
@@ -15,3 +18,4 @@
 }
 
 @import 'component/Logo/Logo';
+@import 'component/Menu/Menu';

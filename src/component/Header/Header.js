@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Logo from './component/Logo/Logo';
+import Menu from './component/Menu/Menu';
 
 const Header = () => (
     <div className="Header">
@@ -11,7 +12,7 @@ const Header = () => (
                 </div>
 
                 <div className="Header__menu">
-
+                    <Menu />
                 </div>
 
                 <div className="Header__cart">
