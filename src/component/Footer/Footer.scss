@@ -1,0 +1,22 @@
+.Footer {
+    font-size: $font-size-sm;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: $gray-100;
+    background: $gray-900;
+
+    &__container {
+        @extend .container;
+    }
+
+    &__row {
+        @extend .row;
+
+        justify-content: space-between;
+    }
+
+    &__copyright,
+    &__developed {
+        @extend .col-auto;
+    }
+}

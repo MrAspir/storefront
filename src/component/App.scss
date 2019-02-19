@@ -5,6 +5,11 @@
     overflow: hidden;
     min-width: 320px;
     min-height: 100%;
+
+    &__main {
+        flex-grow: 1;
+    }
 }
 
 @import 'Header/Header';
+@import 'Footer/Footer';

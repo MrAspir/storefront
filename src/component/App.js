@@ -5,6 +5,7 @@ import Header from './Header/Header';
 import Category from './Category/Category';
 import Cart from './Cart/Cart';
 import Product from './Product/Product';
+import Footer from './Footer/Footer';
 
 class App extends Component {
     render() {
@@ -12,9 +13,13 @@ class App extends Component {
             <div className="App">
                 <Header />
 
-                <Route exact path="/" component={Category} />
-                <Route path="/cart" component={Cart}/>
-                <Route path="/product/:id" component={Product}/>
+                <div className="App__main">
+                    <Route exact path="/" component={Category} />
+                    <Route path="/cart" component={Cart}/>
+                    <Route path="/product/:id" component={Product}/>
+                </div>
+
+                <Footer />
             </div>
         );
     }
