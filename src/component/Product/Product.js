@@ -10,7 +10,14 @@ class Product extends Component {
     state = {
         id: this.props.match.params.id,
         isLoaded: false,
-        product: {}
+        product: {},
+        quantity: 1,
+    };
+
+    quantityChange = (value) => {
+        this.setState({
+           quantity: value
+        });
     };
 
     onSubmit = (event) => {
@@ -49,7 +56,7 @@ class Product extends Component {
 
                             <form className="Product__form" onSubmit={this.onSubmit}>
                                 <div className="Product__quantity">
-                                    <Quantity />
+                                    <Quantity quantity={this.state.quantity} onQuantityChange={(value) => this.quantityChange(value)}/>
                                 </div>
 
                                 <button className="Product__button">Add to cart</button>

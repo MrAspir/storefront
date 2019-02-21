@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 
 class Quantity extends Component {
-    state = {
-        quantity: 1
-    };
-
     onChange = (event) => {
         const { name } = event.target;
         let { value } = event.target;
@@ -13,28 +9,29 @@ class Quantity extends Component {
             value = 1;
         }
 
-        this.setState({
-            [name]: +value
-        });
+        this.props.onQuantityChange(+value);
     };
 
     quantity = (event, number) => {
         event.preventDefault();
 
-        if (+number < 0 && this.state.quantity === 1) {
+        if (number < 0 && this.props.quantity === 1) {
             return;
         }
 
-        this.setState({
-            quantity: this.state.quantity + number
-        })
+        console.log(this.props.quantity);
+        console.log(number);
+
+        this.props.onQuantityChange(this.props.quantity + number);
     };
 
     render() {
+        console.log(this.props.quantity);
+
         return (
             <div className="Quantity">
                 <div className="Quantity__input">
-                    <input className="form-control" type="number" name="quantity" min="1" value={this.state.quantity} onChange={this.onChange} />
+                    <input className="form-control" type="number" name="quantity" min="1" value={this.props.quantity} onChange={this.onChange} />
                 </div>
 
                 <div className="Quantity__controls">
