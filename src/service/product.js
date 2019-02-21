@@ -1,7 +1,7 @@
-class Product {
+class ProductService {
     async fetch () {
         try {
-            const response = await fetch('products.json');
+            const response = await fetch(`//${window.location.host}/products.json`);
 
             return response.json();
         } catch (err) {
@@ -10,8 +10,14 @@ class Product {
     }
 
     async getAll () {
-        return this.fetch();
+        return await this.fetch();
+    }
+
+    async getOne (id) {
+        const response = await this.fetch();
+
+        return response.find(item => item.id === id);
     }
 }
 
-export default new Product();
+export default new ProductService();

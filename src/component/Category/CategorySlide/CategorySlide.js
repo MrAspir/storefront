@@ -1,9 +1,11 @@
 import React from 'react';
 
+import config from '../../../config';
+
 const CategorySlide = () => (
     <div className="CategorySlide">
         <picture className="CategorySlide__picture">
-            <img src="media/plates-header.jpg" alt="Plates" />
+            <img src={`${config.host}/media/plates-header.jpg`} alt="Plates" />
         </picture>
 
         <div className="CategorySlide__container">

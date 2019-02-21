@@ -1,6 +1,7 @@
 .Header {
     padding-top: 12px;
     padding-bottom: 11px;
+    border-bottom: 1px solid #e4e4e4;
 
     &__container {
         @extend .container;

@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import config from '../../../../config';
+
 const Logo = () => (
     <Link className="Logo" to="/">
-        <img src="media/logo.png" alt="Hero" />
+        <img src={`${config.host}/media/logo.png`} alt="Hero" />
     </Link>
 );
 

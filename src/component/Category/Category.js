@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Product from '../../service/product';
+import ProductService from '../../service/product';
 
 import CategorySlide from './CategorySlide/CategorySlide';
 import CategoryCard from './CategoryCard/CategoryCard';
@@ -16,7 +16,7 @@ class Category extends Component {
     };
 
     componentDidMount() {
-        Product.getAll().then((response) => {
+        ProductService.getAll().then((response) => {
             this.setState({
                 isLoaded: true,
                 products: response
