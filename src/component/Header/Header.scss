@@ -1,6 +1,11 @@
 .Header {
+    padding-top: 12px;
+    padding-bottom: 11px;
+
     &__container {
         @extend .container;
+
+        max-width: none;
     }
 
     &__row {

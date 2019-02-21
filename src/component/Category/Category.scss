@@ -1,0 +1,19 @@
+.Category {
+    &__container {
+        @extend .container;
+
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+
+    &__row {
+        @extend .row;
+        @extend %media-preload;
+
+        position: relative;
+        margin-top: -46px;
+    }
+}
+
+@import 'CategorySlide/CategorySlide';
+@import 'CategoryCard/CategoryCard';

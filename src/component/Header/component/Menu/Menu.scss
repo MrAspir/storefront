@@ -34,12 +34,17 @@
         display: block;
         padding: 10px 15px;
         color: $gray-900;
+
+        &:hover {
+            text-decoration: none;
+        }
     }
 
     .Menu {
         position: absolute;
         top: 100%;
         left: 0;
+        z-index: 10;
         flex-direction: column;
         visibility: hidden;
         opacity: 0;
