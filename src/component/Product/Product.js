@@ -26,10 +26,6 @@ class Product extends Component {
         });
     }
 
-    componentWillUpdate(nextProps, nextState, nextContext) {
-        console.log('componentWillUpdate');
-    }
-
     render() {
         const { image, brand, title, price, description } = this.state.product;
 

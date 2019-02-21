@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Logo from './component/Logo/Logo';
-import Menu from './component/Menu/Menu';
-import Cart from './component/Cart/Cart';
+import Logo from './Logo/Logo';
+import Menu from './Menu/Menu';
+import CartWidget from '../Cart/CartWidget/CartWidget';
 
 const Header = () => (
     <div className="Header">
@@ -17,7 +17,7 @@ const Header = () => (
                 </div>
 
                 <div className="Header__cart">
-                    <Cart />
+                    <CartWidget />
                 </div>
             </div>
         </div>

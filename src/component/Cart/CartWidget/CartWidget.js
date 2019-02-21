@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Cart extends Component {
+class CartWidget extends Component {
     state = {
         count: 0,
         dropIsShow: false
@@ -32,10 +32,10 @@ class Cart extends Component {
 
     render() {
         return (
-            <div className="Cart" ref={this.setWrapperRef}>
-                <button className="Cart__button" onClick={this.dropToggle}>My Cart ({this.state.count})</button>
+            <div className="CartWidget" ref={this.setWrapperRef}>
+                <button className="CartWidget__button" onClick={this.dropToggle}>My Cart ({this.state.count})</button>
 
-                <div className={`Cart__drop ${this.state.dropIsShow ? 'show' : ''}`}>
+                <div className={`CartWidget__drop ${this.state.dropIsShow ? 'show' : ''}`}>
                     <p>Cart's empty</p>
                 </div>
             </div>
@@ -43,4 +43,4 @@ class Cart extends Component {
     }
 }
 
-export default Cart;
+export default CartWidget;

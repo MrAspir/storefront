@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Copyright from './component/Copyright/Copyright';
-import Developed from './component/Developed/Developed';
+import Copyright from './Copyright/Copyright';
+import Developed from './Developed/Developed';
 
 const Footer = () => (
     <footer className="Footer">
