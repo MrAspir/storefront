@@ -6,6 +6,12 @@
     min-width: 320px;
     min-height: 100%;
 
+    &,
+    &__main {
+        display: flex;
+        flex-direction: column;
+    }
+
     &__main {
         flex-grow: 1;
     }
@@ -15,3 +21,4 @@
 @import 'Footer/Footer';
 @import 'Category/Category';
 @import 'Product/Product';
+@import 'Cart/Cart';

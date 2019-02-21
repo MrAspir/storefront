@@ -4,11 +4,17 @@ import config from '../../config';
 
 import ProductService from '../../service/product';
 
+import Quantity from '../Cart/Quantity/Quantity';
+
 class Product extends Component {
     state = {
         id: this.props.match.params.id,
         isLoaded: false,
         product: {}
+    };
+
+    onSubmit = (event) => {
+
     };
 
     componentDidMount() {
@@ -17,9 +23,11 @@ class Product extends Component {
                isLoaded: true,
                product: response
            });
-
-           console.log(response);
         });
+    }
+
+    componentWillUpdate(nextProps, nextState, nextContext) {
+        console.log('componentWillUpdate');
     }
 
     render() {
@@ -42,6 +50,14 @@ class Product extends Component {
                             <div className="Product__title">{title}</div>
                             <div className="Product__price">${price}</div>
                             <div className="Product__description">{description}</div>
+
+                            <form className="Product__form" onSubmit={this.onSubmit}>
+                                <div className="Product__quantity">
+                                    <Quantity />
+                                </div>
+
+                                <button className="Product__button">Add to cart</button>
+                            </form>
                         </div>
                     </div>
                 </div>

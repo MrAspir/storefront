@@ -1,0 +1,55 @@
+.Quantity {
+    display: flex;
+
+    &__input {
+        flex-grow: 1;
+    }
+
+    &__controls {
+        margin-left: 2px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__increment,
+    &__decrement {
+        @extend .btn;
+
+        width: 26px;
+        height: 26px;
+        padding: 0;
+        color: #7d7d7d;
+        border-radius: 0;
+        background: #dadada;
+
+        &:focus {
+            box-shadow: none;
+        }
+
+        &:not(:last-child) {
+            margin-bottom: 2px;
+        }
+    }
+
+    .form-control {
+        height: 54px;
+        text-align: center;
+        color: #a2a2a2;
+        border-color: transparent;
+        border-radius: 0;
+        background: #eee;
+
+        &:focus {
+            box-shadow: none;
+        }
+
+        &[type='number'] {
+            -moz-appearance: textfield;
+        }
+
+        &[type=number]::-webkit-inner-spin-button,
+        &[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+        }
+    }
+}

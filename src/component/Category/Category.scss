@@ -1,4 +1,16 @@
 .Category {
+    &,
+    &__container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &,
+    &__container,
+    &__row {
+        flex-grow: 1;
+    }
+
     &__container {
         @extend .container;
 
