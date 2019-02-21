@@ -13,7 +13,8 @@ class Product extends Component {
             params: PropTypes.shape({
                 id: PropTypes.string.isRequired
             }).isRequired
-        }).isRequired
+        }).isRequired,
+        onUpdateCart: PropTypes.func.isRequired
     };
 
     state = {
@@ -30,7 +31,19 @@ class Product extends Component {
     };
 
     onSubmit = (event) => {
+        event.preventDefault();
 
+        const { id, image, title, brand, description, price } = this.state.product;
+
+        this.props.onUpdateCart({
+            id,
+            image,
+            title,
+            brand,
+            description,
+            price,
+            quantity: this.state.quantity
+        });
     };
 
     componentDidMount() {
@@ -65,7 +78,10 @@ class Product extends Component {
 
                             <form className="Product__form" onSubmit={this.onSubmit}>
                                 <div className="Product__quantity">
-                                    <Quantity quantity={this.state.quantity} onQuantityChange={(value) => this.quantityChange(value)}/>
+                                    <Quantity
+                                        quantity={this.state.quantity}
+                                        onQuantityChange={(value) => this.quantityChange(value)}
+                                    />
                                 </div>
 
                                 <button className="Product__button">Add to cart</button>

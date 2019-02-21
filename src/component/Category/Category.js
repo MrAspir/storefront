@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import ProductService from '../../service/product';
 
@@ -6,13 +7,29 @@ import CategorySlide from './CategorySlide/CategorySlide';
 import CategoryCard from './CategoryCard/CategoryCard';
 
 class Category extends Component {
+    static propTypes = {
+        onUpdateCart: PropTypes.func.isRequired
+    };
+
     state = {
         isLoaded: false,
         products: []
     };
 
-    addToCart = () => {
+    addToCart = (productId) => {
+        const {
+            id, image, title, brand, description, price
+        } = this.state.products.find(product => product.id === productId);
 
+        this.props.onUpdateCart({
+            id,
+            image,
+            title,
+            brand,
+            description,
+            price,
+            quantity: 1
+        });
     };
 
     componentDidMount() {
@@ -35,7 +52,7 @@ class Category extends Component {
                             <CategoryCard
                                 key={product.id}
                                 {...product}
-                                addToCart={() => this.addToCart()}
+                                onAddToCart={() => this.addToCart(product.id)}
                             />
                         ))}
                     </div>
