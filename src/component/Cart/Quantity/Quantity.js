@@ -1,15 +1,22 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Quantity extends Component {
+    static propTypes = {
+        quantity: PropTypes.number.isRequired,
+        onQuantityChange: PropTypes.func.isRequired
+    };
+
     onChange = (event) => {
-        const { name } = event.target;
         let { value } = event.target;
+
+        value = +value;
 
         if (value < 1) {
             value = 1;
         }
 
-        this.props.onQuantityChange(+value);
+        this.props.onQuantityChange(value);
     };
 
     quantity = (event, number) => {
@@ -19,15 +26,10 @@ class Quantity extends Component {
             return;
         }
 
-        console.log(this.props.quantity);
-        console.log(number);
-
         this.props.onQuantityChange(this.props.quantity + number);
     };
 
     render() {
-        console.log(this.props.quantity);
-
         return (
             <div className="Quantity">
                 <div className="Quantity__input">

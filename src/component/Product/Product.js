@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import config from '../../config';
 
@@ -7,11 +8,19 @@ import ProductService from '../../service/product';
 import Quantity from '../Cart/Quantity/Quantity';
 
 class Product extends Component {
+    static propTypes = {
+        match: PropTypes.shape({
+            params: PropTypes.shape({
+                id: PropTypes.string.isRequired
+            }).isRequired
+        }).isRequired
+    };
+
     state = {
         id: this.props.match.params.id,
         isLoaded: false,
         product: {},
-        quantity: 1,
+        quantity: 1
     };
 
     quantityChange = (value) => {

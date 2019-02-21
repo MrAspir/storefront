@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 import Header from './Header/Header';
 import Category from './Category/Category';
@@ -14,9 +14,12 @@ class App extends Component {
                 <Header />
 
                 <div className="App__main">
-                    <Route exact path="/" component={Category} />
-                    <Route path="/cart" component={Cart}/>
-                    <Route path="/product/:id" component={Product}/>
+                    <Switch>
+                        <Route exact path="/" component={Category} />
+                        <Route path="/cart" component={Cart}/>
+                        <Route path="/product/:id" component={Product}/>
+                        <Route component={Category}/>
+                    </Switch>
                 </div>
 
                 <Footer />
