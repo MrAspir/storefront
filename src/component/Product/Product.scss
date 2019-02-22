@@ -99,5 +99,9 @@
         &:hover {
             color: $white;
         }
+
+        &:focus {
+            box-shadow: none;
+        }
     }
 }
