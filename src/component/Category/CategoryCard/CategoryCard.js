@@ -20,8 +20,8 @@ const CategoryCard = ({ id, image, title, brand, price, onAddToCart }) => (
 
             <div className="CategoryCard__content">
                 <div className="CategoryCard__brand">{brand}</div>
-                <h3 className="CategoryCard__title">{id}{title}</h3>
-                <div className="CategoryCard__price">${price}</div>
+                <h3 className="CategoryCard__title">{title}</h3>
+                <div className="CategoryCard__price">${price.toFixed(2)}</div>
             </div>
         </div>
     </div>

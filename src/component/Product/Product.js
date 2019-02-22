@@ -61,7 +61,7 @@ class Product extends Component {
         return (
             <div className="Product">
                 <div className="Product__container">
-                    <div className="Product__row">
+                    <div className={`Product__row ${this.state.isLoaded ? '' : 'loading'}`}>
                         <div className="Product__left">
                             <div className="Product__media">
                                 <picture className="Product__picture">
@@ -73,7 +73,7 @@ class Product extends Component {
                         <div className="Product__right">
                             <div className="Product__brand">{brand}</div>
                             <div className="Product__title">{title}</div>
-                            <div className="Product__price">${price}</div>
+                            <div className="Product__price">${(+price).toFixed(2)}</div>
                             <div className="Product__description">{description}</div>
 
                             <form className="Product__form" onSubmit={this.onSubmit}>

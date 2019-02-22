@@ -20,11 +20,17 @@ class App extends Component {
                 cart: this.state.cart.map(cartItem => cartItem.id === item.id ?
                     { ...cartItem, quantity: cartItem.quantity + item.quantity } :
                     cartItem)
-            })
+            });
         }
 
         this.setState({
             cart: [ ...this.state.cart, item ]
+        });
+    };
+
+    removeCartItem = (id) => {
+        this.setState({
+            cart: this.state.cart.filter(item => item.id !== id)
         });
     };
 
@@ -35,7 +41,7 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <Header />
+                <Header cart={this.state.cart} onRemoveCartItem={(id) => this.removeCartItem(id)} />
 
                 <div className="App__main">
                     <Switch>
