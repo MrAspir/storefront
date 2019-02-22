@@ -1,2 +1,146 @@
-@import 'Quantity/Quantity';
+.Cart {
+    padding-top: 100px;
+    padding-bottom: 60px;
+    background: #f6f6f6;
+
+    &,
+    &__container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &,
+    &__container,
+    &__row {
+        flex-grow: 1;
+    }
+
+    &__container,
+    &__header {
+        @extend .container;
+    }
+
+    &__container {
+        padding: 60px;
+        background: $white;
+    }
+
+    &__header {
+        margin-bottom: 76px;
+    }
+
+    &__row {
+        @extend .row;
+    }
+
+    &__title {
+        font-family: 'Bitter', 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-size: 36px;
+        text-align: center;
+    }
+
+    &__table {
+        thead {
+            font-size: 14px;
+            text-transform: uppercase;
+            color: #9f9f9f;
+        }
+
+        th {
+            font-weight: 500;
+            padding: 25px 0;
+            border-bottom: 1px solid #e4e4e4;
+
+            &:not(:first-child) {
+                text-align: center;
+            }
+        }
+    }
+
+    &__empty {
+        font-size: 18px;
+        font-weight: 500;
+        height: 200px;
+        text-align: center;
+        text-transform: uppercase;
+        color: #9f9f9f;
+    }
+
+    &__total {
+        font-size: 14px;
+        display: flex;
+        justify-content: flex-end;
+        padding-top: 26px;
+        padding-bottom: 30px;
+        text-transform: uppercase;
+        color: #9f9f9f;
+        border-top: 1px solid #e4e4e4;
+
+        &-content {
+            max-width: 300px;
+            width: 100%;
+        }
+
+        &-title,
+        &-item {
+            &:not(:last-child) {
+                margin-bottom: 10px;
+            }
+        }
+
+        &-item {
+            display: flex;
+            justify-content: space-between;
+
+            &-value {
+                &--cad {
+                    color: #1d1d20;
+                }
+            }
+        }
+    }
+
+    &__bottom {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 30px;
+        border-top: 1px solid #e4e4e4;
+    }
+
+    &__link,
+    &__button {
+        @extend .btn;
+    }
+
+    &__link {
+        font-weight: 500;
+        padding: 0;
+        line-height: (52px / 16px);
+        text-transform: uppercase;
+        text-decoration: underline;
+    }
+
+    &__button {
+        font-size: 14px;
+        font-weight: 500;
+        width: 180px;
+        height: 54px;
+        text-transform: uppercase;
+        white-space: nowrap;
+        border-radius: 0;
+        background: #1d1d20;
+
+        &,
+        &:hover {
+            color: $white;
+        }
+
+        &:focus {
+            box-shadow: none;
+        }
+    }
+}
+
+@import 'CartItem/CartItem';
 @import 'CartWidget/CartWidget';
+@import 'Quantity/Quantity';

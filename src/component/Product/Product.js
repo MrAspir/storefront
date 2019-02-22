@@ -72,7 +72,7 @@ class Product extends Component {
 
                         <div className="Product__right">
                             <div className="Product__brand">{brand}</div>
-                            <div className="Product__title">{title}</div>
+                            <h1 className="Product__title">{title}</h1>
                             <div className="Product__price">${(+price).toFixed(2)}</div>
                             <div className="Product__description">{description}</div>
 

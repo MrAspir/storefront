@@ -28,6 +28,15 @@ class App extends Component {
         });
     };
 
+    updateCartItemQuantity = (id, quantity) => {
+        this.setState({
+            cart: this.state.cart.map(item => item.id === id ? {
+                ...item,
+                quantity
+            } : item)
+        });
+    };
+
     removeCartItem = (id) => {
         this.setState({
             cart: this.state.cart.filter(item => item.id !== id)
@@ -48,7 +57,16 @@ class App extends Component {
                         <Route exact path="/" render={props =>(
                            <Category {...props} onUpdateCart={(item) => this.updateCart(item)} />
                         )} />
-                        <Route path="/cart" component={Cart} />
+
+                        <Route path="/cart" render={props => (
+                            <Cart
+                                {...props}
+                                cart={this.state.cart}
+                                onUpdateCartItemQuantity={(id, quantity) => this.updateCartItemQuantity(id, quantity)}
+                                onRemoveCartItem={(id) => this.removeCartItem(id)}
+                            />
+                        )} />
+
                         <Route path="/product/:id" render={props => (
                             <Product {...props} onUpdateCart={(item) => this.updateCart(item)} />
                         )} />
