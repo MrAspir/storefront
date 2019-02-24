@@ -5,7 +5,7 @@ import Logo from './Logo/Logo';
 import Menu from './Menu/Menu';
 import CartWidget from '../Cart/CartWidget/CartWidget';
 
-const Header = (props) => (
+const Header = props => (
     <div className="Header">
         <div className="Header__container">
             <div className="Header__row">

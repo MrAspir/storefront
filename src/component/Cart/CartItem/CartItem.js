@@ -6,6 +6,8 @@ import config from '../../../config';
 
 import Quantity from '../Quantity/Quantity';
 
+const { host, routs } = config;
+
 class CartItem extends Component {
     static  propTypes = {
         id: PropTypes.number.isRequired,
@@ -21,16 +23,16 @@ class CartItem extends Component {
     totalPrice = () => this.props.price * this.props.quantity;
 
     render() {
-        const { id, image, title, brand, price, onUpdateCartItemQuantity, onRemoveCartItem } = this.props;
+        const { id, image, title, brand, price, quantity, onUpdateCartItemQuantity, onRemoveCartItem } = this.props;
 
         return (
             <tr className="CartItem">
                 <td>
                     <div className="CartItem__product">
                         <div className="CartItem__media">
-                            <Link to={`/product/${id}`}>
+                            <Link to={routs.product.replace(':id', id)}>
                                 <picture className="CartItem__picture">
-                                    <img src={`${config.host}/media/${image}`} alt={title} />
+                                    <img src={`${host}/media/${image}`} alt={title} />
                                 </picture>
                             </Link>
                         </div>
@@ -44,7 +46,7 @@ class CartItem extends Component {
                 </td>
 
                 <td className="CartItem__quantity">
-                    <Quantity quantity={this.props.quantity} onQuantityChange={(value) => onUpdateCartItemQuantity(id, value)} />
+                    <Quantity quantity={quantity} onQuantityChange={value => onUpdateCartItemQuantity(id, value)} />
                 </td>
 
                 <td className="CartItem__total">

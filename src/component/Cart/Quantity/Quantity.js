@@ -22,11 +22,13 @@ class Quantity extends Component {
     quantity = (event, number) => {
         event.preventDefault();
 
-        if (number < 0 && this.props.quantity === 1) {
+        const { quantity, onQuantityChange } = this.props;
+
+        if (number < 0 && quantity === 1) {
             return;
         }
 
-        this.props.onQuantityChange(this.props.quantity + number);
+        onQuantityChange(quantity + number);
     };
 
     render() {

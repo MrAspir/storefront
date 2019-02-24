@@ -7,6 +7,8 @@ import ProductService from '../../service/product';
 
 import Quantity from '../Cart/Quantity/Quantity';
 
+const { host } = config;
+
 class Product extends Component {
     static propTypes = {
         match: PropTypes.shape({
@@ -23,6 +25,16 @@ class Product extends Component {
         product: {},
         quantity: 1
     };
+
+    isLoaded = () => this.state.isLoaded;
+
+    onLoad = (id) => ProductService.getOne(id)
+        .then(response => (
+            this.setState({
+                isLoaded: true,
+                product: response
+            })
+        ));
 
     quantityChange = (value) => {
         this.setState({
@@ -47,25 +59,34 @@ class Product extends Component {
     };
 
     componentDidMount() {
-        ProductService.getOne(+this.state.id).then((response) => {
-           this.setState({
-               isLoaded: true,
-               product: response
-           });
-        });
+        this.onLoad(+this.state.id);
+    }
+
+    componentWillUpdate(nextProps, nextState, nextContext) {
+        this.onLoad(+nextState.id);
+    }
+
+    componentWillReceiveProps(nextProps, nextContext) {
+        const nextId = nextProps.match.params.id;
+
+        if (nextId !== this.state.id) {
+            this.setState({
+                id: nextId
+            })
+        }
     }
 
     render() {
-        const { image, brand, title, price, description } = this.state.product;
+        const { product: { image, brand, title, price, description }, quantity } = this.state;
 
         return (
             <div className="Product">
                 <div className="Product__container">
-                    <div className={`Product__row ${this.state.isLoaded ? '' : 'loading'}`}>
+                    <div className={`Product__row ${this.isLoaded() ? '' : 'loading'}`}>
                         <div className="Product__left">
                             <div className="Product__media">
                                 <picture className="Product__picture">
-                                    <img src={`${config.host}/media/${image}`} alt={title} />
+                                    <img src={`${host}/media/${image}`} alt={title} />
                                 </picture>
                             </div>
                         </div>
@@ -79,8 +100,8 @@ class Product extends Component {
                             <form className="Product__form" onSubmit={this.onSubmit}>
                                 <div className="Product__quantity">
                                     <Quantity
-                                        quantity={this.state.quantity}
-                                        onQuantityChange={(value) => this.quantityChange(value)}
+                                        quantity={quantity}
+                                        onQuantityChange={value => this.quantityChange(value)}
                                     />
                                 </div>
 

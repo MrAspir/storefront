@@ -19,7 +19,9 @@ class Cart extends Component {
     };
 
     itemRender = () => {
-        if (!this.props.cart.length) {
+        const { cart, onUpdateCartItemQuantity, onRemoveCartItem } = this.props;
+
+        if (!cart.length) {
             return (
                 <tr>
                     <td colSpan="4" className="Cart__empty">Cart's empty</td>
@@ -27,12 +29,12 @@ class Cart extends Component {
             )
         }
 
-        return this.props.cart.map(item => (
+        return cart.map(item => (
             <CartItem
                 key={item.id}
                 { ...item }
-                onUpdateCartItemQuantity={(id, quantity) => this.props.onUpdateCartItemQuantity(id, quantity)}
-                onRemoveCartItem={() => this.props.onRemoveCartItem(item.id)}
+                onUpdateCartItemQuantity={(id, quantity) => onUpdateCartItemQuantity(id, quantity)}
+                onRemoveCartItem={() => onRemoveCartItem(item.id)}
             />
         ));
     };
@@ -79,7 +81,7 @@ class Cart extends Component {
                     </div>
 
                     <div className="Cart__bottom">
-                        <Link className="Cart__link" to={'/'}>Continue shopping</Link>
+                        <Link className="Cart__link" to="/">Continue shopping</Link>
                         <button className="Cart__button">Checkout (${this.totalPrice().toFixed(2)})</button>
                     </div>
                 </div>

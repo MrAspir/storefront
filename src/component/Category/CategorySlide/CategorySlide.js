@@ -2,10 +2,12 @@ import React from 'react';
 
 import config from '../../../config';
 
+const { host } = config;
+
 const CategorySlide = () => (
     <div className="CategorySlide">
         <picture className="CategorySlide__picture">
-            <img src={`${config.host}/media/plates-header.jpg`} alt="Plates" />
+            <img src={`${host}/media/plates-header.jpg`} alt="Plates" />
         </picture>
 
         <div className="CategorySlide__container">

@@ -1,0 +1,29 @@
+.Error {
+    &,
+    &__container {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+
+    &__container {
+        @extend .container;
+
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__code {
+        font-size: 240px;
+        line-height: 1;
+    }
+
+    &__title {
+        font-family: 'Bitter', 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-size: 48px;
+    }
+
+    &__text {
+        font-size: 24px;
+    }
+}

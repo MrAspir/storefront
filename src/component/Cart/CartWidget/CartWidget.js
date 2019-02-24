@@ -24,32 +24,32 @@ class CartWidget extends Component {
     dropShow = () => this.setState({ dropIsShow: true });
     dropHide = () => this.setState({ dropIsShow: false });
     dropToggle = () => this.state.dropIsShow ? this.dropHide() : this.dropShow();
-
-    setWrapperRef = (node) => {
-        this.wrapperRef = node;
-    };
+    totalQuantity = () => this.props.cart.reduce((sum, item) => sum + item.quantity, 0);
+    totalPrice = () => this.props.cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    setWrapperRef = node => this.wrapperRef = node;
 
     handleClickOutside = (event) => {
+        const { wrapperRef } = this;
+
         if (this.state.dropIsShow) {
-            if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
-                this.dropHide();
+            if (wrapperRef && !wrapperRef.contains(event.target)) {
+                return this.dropHide();
             }
         }
     };
 
-    totalQuantity = () => this.props.cart.reduce((sum, item) => sum + item.quantity, 0);
-    totalPrice = () => this.props.cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-
     itemRender = () => {
-        if (!this.props.cart.length) {
+        const { cart, onRemoveCartItem } = this.props;
+
+        if (!cart.length) {
             return <p>Cart's empty</p>
         }
 
-        return this.props.cart.map(item => (
+        return cart.map(item => (
             <CartWidgetItem
                 key={item.id}
                 { ...item }
-                onRemoveCartItem={() => this.props.onRemoveCartItem(item.id)}
+                onRemoveCartItem={() => onRemoveCartItem(item.id)}
             />
         ));
     };

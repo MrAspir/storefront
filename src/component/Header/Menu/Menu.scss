@@ -50,6 +50,7 @@
         opacity: 0;
         padding: 10px 15px;
         min-width: 100%;
+        white-space: nowrap;
         background: $white;
         box-shadow: 0 10px 10px transparentize($black, 0.8);
         transition: visibility 0s step-end 0.35s, opacity 0.15s ease-in-out 0.2s;

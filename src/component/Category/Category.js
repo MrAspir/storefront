@@ -16,6 +16,8 @@ class Category extends Component {
         products: []
     };
 
+    idLoaded = () => this.state.isLoaded;
+
     addToCart = (productId) => {
         const {
             id, image, title, brand, description, price
@@ -33,12 +35,13 @@ class Category extends Component {
     };
 
     componentDidMount() {
-        ProductService.getAll().then((response) => {
-            this.setState({
-                isLoaded: true,
-                products: response
-            });
-        });
+        ProductService.getAll()
+            .then(response => (
+                this.setState({
+                    isLoaded: true,
+                    products: response
+                })
+            ));
     }
 
     render() {
@@ -47,8 +50,8 @@ class Category extends Component {
                 <CategorySlide />
 
                 <div className="Category__container">
-                    <div className={`Category__row ${this.state.isLoaded ? '' : 'loading'}`}>
-                        {this.state.isLoaded && this.state.products.map(product => (
+                    <div className={`Category__row ${this.idLoaded() ? '' : 'loading'}`}>
+                        {this.idLoaded() && this.state.products.map(product => (
                             <CategoryCard
                                 key={product.id}
                                 {...product}

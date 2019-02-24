@@ -4,16 +4,18 @@ import PropTypes from 'prop-types';
 
 import config from '../../../config';
 
+const { host, routs } = config;
+
 const CategoryCard = ({ id, image, title, brand, price, onAddToCart }) => (
     <div className="CategoryCard">
         <div className="CategoryCard__inner">
             <div className="CategoryCard__media">
                 <picture className="CategoryCard__picture">
-                    <img src={`${config.host}/media/${image}`} alt={title} />
+                    <img src={`${host}/media/${image}`} alt={title} />
                 </picture>
 
                 <div className="CategoryCard__controls">
-                    <Link className="CategoryCard__button" to={`/product/${id}`}>View details</Link>
+                    <Link className="CategoryCard__button" to={routs.product.replace(':id', id)}>View details</Link>
                     <button className="CategoryCard__button" onClick={onAddToCart}>Add to cart</button>
                 </div>
             </div>
